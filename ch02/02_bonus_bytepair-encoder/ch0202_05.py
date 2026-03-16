@@ -1,4 +1,5 @@
 # 自己从零开始编写的 BPE 分词器
+# BPE (Byte Pair Encoding) 字节对编码
 import os
 import sys
 import io
