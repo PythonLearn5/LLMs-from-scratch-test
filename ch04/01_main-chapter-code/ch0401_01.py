@@ -11,7 +11,7 @@ import torch.nn as nn
 import tiktoken
 
 
-# 打印 matplotlib 库版本
+# 打印 matplotlib 库版本。数据可视化库之一，用来把数据画成各种图表
 print("matplotlib version:", version("matplotlib"))
 
 # 打印 torch 版本
@@ -48,7 +48,10 @@ class DummyGPTModel(nn.Module):
         # 用来表示 token 在序列中的位置
         self.pos_emb = nn.Embedding(cfg["context_length"], cfg["emb_dim"])
 
-        # embedding dropout
+        # embedding dropout 随机让一部分 token 的 embedding 变为 0（或缩放）（训练时随机丢弃神经元）
+        # 关键区别：
+        # 普通 dropout：丢掉向量中的“部分维度”
+        # embedding dropout：丢掉“整个词向量”
         self.drop_emb = nn.Dropout(cfg["drop_rate"])
 
         # Transformer blocks（这里只是占位符）
