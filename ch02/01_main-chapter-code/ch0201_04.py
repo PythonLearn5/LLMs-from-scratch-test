@@ -2,8 +2,11 @@ import re
 
 class SimpleTokenizerV1:
     def __init__(self, vocab):
+        # 单词--token_ID
         self.str_to_int = vocab
+        # token_ID--单词
         self.int_to_str = {i: s for s, i in vocab.items()}
+        print(self.int_to_str)
 
     def encode(self, text):
         preprocessed = re.split(r'([,.:;?_!"()\']|--|\s)', text)
@@ -16,7 +19,7 @@ class SimpleTokenizerV1:
 
     def decode(self, ids):
         text = " ".join([self.int_to_str[i] for i in ids])
-        # Replace spaces before the specified punctuations
+        # 删除标点符号前面多余的空格
         text = re.sub(r'\s+([,.?!"()\'])', r'\1', text)
         return text
 
@@ -39,7 +42,7 @@ vocab = {token:integer for integer,token in enumerate(all_words)}
 
 tokenizer = SimpleTokenizerV1(vocab)
 
-text = """"It's the last he painted, you know," 
+text = """"It's the last he painted, you know,"
            Mrs. Gisburn said with pardonable pride."""
 ids = tokenizer.encode(text)
 print(ids)
