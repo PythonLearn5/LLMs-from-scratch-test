@@ -39,7 +39,7 @@ torch.manual_seed(123)
 # 相当于一个查表操作
 # 表大小 = vocab_size × output_dim
 embedding_layer = torch.nn.Embedding(vocab_size, output_dim)
-
+# PyTorch 会随机初始化 embedding_layer.weight
 # print(embedding_layer)
 
 # 查看 embedding 权重矩阵
@@ -60,4 +60,5 @@ print(embedding_layer(torch.tensor([3])))
 # 输入 shape:  (4,)
 # 输出 shape:  (4, 3)
 # 即 4 个 token → 4 个向量，每个向量 3 维
+# 相当于取：2, 3, 5, 1 重新组合一个embedding_layer
 print(embedding_layer(input_ids))

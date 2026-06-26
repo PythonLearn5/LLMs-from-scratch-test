@@ -1,10 +1,8 @@
-### 核心概念 
+# Embedding 嵌入（或嵌入层） 
 
 这个步骤本质上就是：**把“离散的编号（token id）转换成“连续的向量表示（embedding）”**，让模型可以进行数学计算。
-
-我给你用“课程实现 + 原理”讲清楚👇
-
----
+Embedding = 一个可学习的 Tensor（矩阵） + 按索引取行
+Embedding（vocab_size=6,output_dim=3） 表示 embedding.weight 中有 6个token。每个 token是一个3维Tensor向量
 
 # 一、输入是什么？
 
@@ -72,7 +70,7 @@ x = E[token_ids]
 
 ---
 
-# 三、代码层面（你课程里的实现）
+# 三、代码层面
 
 在 PyTorch 里其实就是一行：
 

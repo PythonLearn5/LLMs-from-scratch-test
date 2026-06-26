@@ -50,6 +50,8 @@ class GPTDatasetV1(Dataset):
 
 
 # 创建 DataLoader 的函数
+# shuffle 是否打乱数据
+# drop_last 如果最后 batch 不够 batch_size 是否丢弃
 def create_dataloader_v1(txt, batch_size=4, max_length=256,
                          stride=128, shuffle=True, drop_last=True,
                          num_workers=0):
