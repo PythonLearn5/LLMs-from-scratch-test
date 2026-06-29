@@ -123,10 +123,9 @@ class Encoder:
         # 空格
         self.pat = re.compile(
             r"""'s|'t|'re|'ve|'m|'ll|'d|
-            ?\p{L}+|
-            ?\p{N}+|
-            ?[^\s\p{L}\p{N}]+|
-            \s+(?!\S)|
+            \p{L}+|
+            \p{N}+|
+            [^\s\p{L}\p{N}]+|
             \s+"""
         )
 

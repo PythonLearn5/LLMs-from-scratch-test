@@ -47,9 +47,7 @@ class GPTDatasetV1(Dataset):
 
 
 # 创建 DataLoader 的函数
-def create_dataloader_v1(txt, batch_size=4, max_length=256,
-                         stride=128, shuffle=True, drop_last=True,
-                         num_workers=0):
+def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=True, drop_last=True, num_workers=0):
 
     # 初始化 GPT-2 tokenizer（tiktoken 提供）
     tokenizer = tiktoken.get_encoding("gpt2")
@@ -95,16 +93,20 @@ inputs, targets = next(data_iter)
 print("Token IDs:\n", inputs)
 print("\nInputs shape:\n", inputs.shape)
 
-
+# input_ids = torch.tensor([[   40,   367,  2885,  1464],[ 1807,  3619,   402,   271]])
+# token_embeddings = token_embedding_layer(input_ids)
+# print(token_embeddings)
 token_embeddings = token_embedding_layer(inputs)
 print(token_embeddings.shape)
+# print(token_embeddings)
 
-# GPT-2 使用绝对位置嵌入，所以我们只需创建另一个嵌入层
+# GPT-2 使用绝对位置嵌入，所以我们只需创建另一个嵌入层 4 * 256
 context_length = max_length
 pos_embedding_layer = torch.nn.Embedding(context_length, output_dim)
 
 pos_embeddings = pos_embedding_layer(torch.arange(max_length))
 print(pos_embeddings.shape)
+print(pos_embeddings)
 # 创建 LLM 中使用的输入嵌入，我们只需将词元和位置嵌入相加
 input_embeddings = token_embeddings + pos_embeddings
 print(input_embeddings.shape)
