@@ -10,7 +10,8 @@ token_embedding = nn.Embedding(vocab_size, embedding_dim)
 
 # position embedding
 pos_embedding = nn.Embedding(max_length, embedding_dim)
-
+print(pos_embedding)
+print(pos_embedding.weight)
 # 输入 token
 input_ids = torch.tensor([40,3021,9552])
 

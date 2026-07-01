@@ -37,7 +37,7 @@ torch.manual_seed(123)
 # 创建 embedding 层 token embedding
 # 作用：把 token id 映射成向量
 # 相当于一个查表操作
-# 表大小 = vocab_size × output_dim
+# 表大小 6*3 = vocab_size × output_dim
 embedding_layer = torch.nn.Embedding(vocab_size, output_dim)
 # PyTorch 会随机初始化 embedding_layer.weight
 # print(embedding_layer)
