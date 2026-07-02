@@ -159,7 +159,7 @@ def download_vocab():
             file_size = int(r.headers["content-length"])
             chunk_size = 1000
             with tqdm(ncols=100, desc="Fetching " + filename, total=file_size, unit_scale=True) as pbar:
-                # 1k for chunk_size, since Ethernet packet size is around 1500 bytes
+                # chunk_size 设置为 1k，因为以太网数据包大小约为 1500 字节。
                 for chunk in r.iter_content(chunk_size=chunk_size):
                     f.write(chunk)
                     pbar.update(chunk_size)
