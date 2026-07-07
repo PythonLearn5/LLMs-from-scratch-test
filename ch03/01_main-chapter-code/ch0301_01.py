@@ -20,11 +20,20 @@ inputs = torch.tensor(
 # 在 self-attention 中，当前处理的词就是 query
 query = inputs[1]  # journey
 
-# 创建一个空tensor，用来存储注意力分数
+# 创建一个空tensor，用来存储注意力分数 6 * 3
 attn_scores_2 = torch.empty(inputs.shape[0])
 
 # 计算 query 和所有 token 的相似度
 # 这里使用的是 dot product（点积）
+# x1 = [0.43, 0.15, 0.89]
+# x2 = [0.55, 0.87, 0.66]
+# x1 · x2 = a1*b1 + a2*b2 + a3*b3
+# 第一维：0.43 × 0.55 = 0.2365
+# 第二维：0.15 × 0.87 = 0.1305
+# 第三维：0.89 × 0.66 = 0.5874
+# 同方向 → 值大
+# 反方向 → 负数
+# 垂直 → 0
 for i, x_i in enumerate(inputs):
     # dot product = 相似度
     attn_scores_2[i] = torch.dot(x_i, query)
@@ -34,9 +43,7 @@ print(attn_scores_2)
 # ---------------------------------------
 # 手动计算一次 dot product（用于验证）
 # ---------------------------------------
-
 res = 0.
-
 for idx, element in enumerate(inputs[0]):
     res += inputs[0][idx] * query[idx]
 
@@ -85,10 +92,14 @@ print("Sum:", attn_weights_2.sum())
 
 query = inputs[1] # journey
 
-# 初始化 context 向量
+# 初始化 context 向量，长度：3 的vector
 context_vec_2 = torch.zeros(query.shape)
 
 # 按照注意力权重，对所有token进行加权求和
+# 等价于 context_vec_2 = attn_weights @ inputs
+# context vector（上下文向量） 融合了全句信息的词表示
+# 核心作用：让词“理解上下文”
+# 权重：[0.1385, 0.2379, 0.2333, 0.1240, 0.1082, 0.1581]
 for i,x_i in enumerate(inputs):
     context_vec_2 += attn_weights_2[i] * x_i
 
