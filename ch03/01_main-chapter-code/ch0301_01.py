@@ -20,7 +20,7 @@ inputs = torch.tensor(
 # 在 self-attention 中，当前处理的词就是 query
 query = inputs[1]  # journey
 
-# 创建一个空tensor，用来存储注意力分数 6 * 3
+# 创建一个空tensor，用来存储注意力分数 6 * 3  inputs.shape[0] = 6  inputs.shape[1] = 3
 attn_scores_2 = torch.empty(inputs.shape[0])
 
 # 计算 query 和所有 token 的相似度

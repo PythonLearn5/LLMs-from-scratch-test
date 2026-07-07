@@ -23,7 +23,7 @@ inputs = torch.tensor(
 x_2 = inputs[1] # second input element
 
 # 输入向量维度
-d_in = inputs.shape[1]  # 3
+d_in = inputs.shape[1]  # shape=[6*3] shape[1]=3
 
 # 输出向量维度（attention内部维度）
 d_out = 2
@@ -31,7 +31,6 @@ d_out = 2
 # --------------------------------------------------
 # 设置随机种子，保证每次运行结果一致
 # --------------------------------------------------
-
 torch.manual_seed(123)
 
 # --------------------------------------------------
@@ -45,11 +44,10 @@ W_value = torch.nn.Parameter(torch.rand(d_in, d_out), requires_grad=False)
 
 # 权重矩阵形状
 # (3 × 2)
-
 # --------------------------------------------------
 # 第一步：计算 Query / Key / Value
 # --------------------------------------------------
-print(x_2)
+print(x_2)     # 选择第2个token（journey=[0.55, 0.87, 0.66]）
 print(W_query)
 # 当前token的Query
 # 其中 @ 代表的是：矩阵乘法（Matrix Multiplication）

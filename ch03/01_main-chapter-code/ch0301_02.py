@@ -27,6 +27,7 @@ inputs = torch.tensor(
 attn_scores = torch.empty(6, 6)
 
 # 使用两层循环计算 dot product
+# 计算所有 token 两两之间的点积（相似度）
 for i, x_i in enumerate(inputs):
     for j, x_j in enumerate(inputs):
         # 点积表示两个向量的相似度
@@ -41,6 +42,9 @@ print(attn_scores)
 
 # inputs @ inputs.T
 # 相当于所有token互相计算dot product
+# inputs.T 矩阵的转置（Transpose） 矩阵的行变成列，列变成行
+# print(inputs)
+# print(inputs.T)
 attn_scores = inputs @ inputs.T
 
 print(attn_scores)
@@ -77,3 +81,26 @@ print("All row sums:", attn_weights.sum(dim=-1))
 all_context_vecs = attn_weights @ inputs
 
 print(all_context_vecs)
+
+# 第一步：原始输入是什么？每个token只表示它自己
+# inputs
+# 我    → [1,0]
+# 爱    → [0,1]
+# 学习  → [1,1]
+# AI    → [2,0]
+# 第二步：Attention 算出了什么？
+# attn_weights [0.1, 0.2, 0.6, 0.1]
+# "我" 当前 token 对所有 token 的关注程度
+# 关注：
+# 自己     10%
+# 爱       20%
+# 学习     60%
+# AI       10%
+# 第三步：为什么要乘 inputs
+# 现在知道了"我" 最关注 学习
+# 学习  → [1,1] * 0.6 表示： 学习贡献 60%。
+# context = 0.1×我 + 0.2×爱 + 0.6×学习 + 0.1×AI
+# 第一维：0.1×1 + 0.2×0 + 0.6×1 + 0.1×2  =  0.9
+# 第二维：0.1×0 + 0.2×1 + 0.6×1 + 0.1×0  =  0.8
+#
+# context = [0.9,0.8]
