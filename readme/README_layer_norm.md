@@ -5,7 +5,7 @@
 
 # 📐 它在做什么？
 
-对一个向量（比如一个 token 的 embedding）：
+对一个 token 自己的768维（token 的 embedding）：
 
 1. 计算平均值（mean）
 2. 计算方差（variance）
