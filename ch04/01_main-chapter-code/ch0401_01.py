@@ -145,12 +145,11 @@ txt2 = "Every day holds a"
 batch.append(torch.tensor(tokenizer.encode(txt1)))
 batch.append(torch.tensor(tokenizer.encode(txt2)))
 
-# stack 成 tensor
+# stack 合并成一个 tensor
 # shape: (2, seq_len)
 batch = torch.stack(batch, dim=0)
 
 print(batch)
-
 
 # 设置随机种子（保证结果可复现）
 torch.manual_seed(123)
