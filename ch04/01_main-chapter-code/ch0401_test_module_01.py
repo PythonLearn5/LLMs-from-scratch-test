@@ -10,7 +10,8 @@ class MyModel(nn.Module):
 
 
 torch.manual_seed(123)
-
+# x = torch.zeros(10)
+# x = torch.randn(10)
 x = torch.ones(10)
 print(x)
 print(x.shape)
