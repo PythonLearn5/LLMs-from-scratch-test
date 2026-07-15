@@ -56,7 +56,7 @@ class MyModel(nn.Module):
 
 ## 3️⃣ `torch.nn.functional`（函数版层）
 
-👉 和 `nn` 类似，但**没有参数**
+👉 和 `nn` 类似，但没有参数
 
 ```python
 import torch.nn.functional as F
@@ -197,4 +197,4 @@ optimizer.zero_grad()
 
 👉 PyTorch 模块可以理解为：
 
-> **torch 负责算，nn 负责搭模型，optim 负责训练，data 负责喂数据**
+> torch 负责算，nn 负责搭模型，optim 负责训练，data 负责喂数据

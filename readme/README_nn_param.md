@@ -1,6 +1,6 @@
 # 🧠 nn.Parameter 理解
 
-👉 `nn.Parameter` = **会被模型自动训练（更新）的张量**
+👉 `nn.Parameter` = 会被模型自动训练（更新）的张量
 
 ---
 
@@ -75,7 +75,7 @@ tensor.requires_grad = True
 
 但多了一步：
 
-👉 **自动注册到 Module**
+👉 自动注册到 Module
 
 ---
 
@@ -180,7 +180,7 @@ self.w.data = some_tensor
 
 👉 `nn.Parameter` 本质就是：
 
-**“告诉 PyTorch：这个张量是模型的一部分，需要被训练”**
+“告诉 PyTorch：这个张量是模型的一部分，需要被训练”
 
 ---
 

@@ -1,6 +1,6 @@
 # Embedding 嵌入（或嵌入层） 
 
-这个步骤本质上就是：**把“离散的编号（token id）转换成“连续的向量表示（embedding）”**，让模型可以进行数学计算。
+这个步骤本质上就是：把“离散的编号（token id）转换成“连续的向量表示（embedding）”，让模型可以进行数学计算。
 Embedding = 一个可学习的 Tensor（矩阵） + 按索引取行
 Embedding（vocab_size=6,output_dim=3） 表示 embedding.weight 中有 6个token。每个 token是一个3维Tensor向量
 
@@ -19,7 +19,7 @@ Embedding（vocab_size=6,output_dim=3） 表示 embedding.weight 中有 6个toke
 → [40, 123, 999]
 ```
 
-这些 **token id 本质只是整数索引**，没有语义。
+这些 token id 本质只是整数索引，没有语义。
 
 ---
 
@@ -27,7 +27,7 @@ Embedding（vocab_size=6,output_dim=3） 表示 embedding.weight 中有 6个toke
 
 核心操作：
 
-👉 **查表（lookup table）**
+👉 查表（lookup table）
 
 数学上就是一个矩阵：
 
@@ -94,7 +94,7 @@ x = self.token_embedding(token_ids)
 
 这个过程不是“计算”，而是：
 
-👉 **把符号 → 映射成向量空间中的点**
+👉 把符号 → 映射成向量空间中的点
 
 你可以理解为：
 
@@ -110,7 +110,7 @@ x = self.token_embedding(token_ids)
 
 因为 Transformer 只能处理：
 
-👉 **连续数值（向量）**
+👉 连续数值（向量）
 
 不能处理：
 
@@ -138,7 +138,7 @@ dog ≈ cat
 
 token embedding 之后通常会加：
 
-👉 **position embedding（位置编码）**
+👉 position embedding（位置编码）
 
 ```python
 x = token_embedding + position_embedding
@@ -152,7 +152,7 @@ x = token_embedding + position_embedding
 
 # 八、一句话总结
 
-👉 **Embedding 层就是一个“可训练的词向量查表”，把 token id 转成可以参与神经网络计算的向量。**
+👉 Embedding 层就是一个“可训练的词向量查表”，把 token id 转成可以参与神经网络计算的向量。
 
 ---
 

@@ -1,6 +1,6 @@
 # 🧠 一句话理解 nn.Sequential
 
-`nn.Sequential` 是 **PyTorch** 里一个非常实用的模块，用来**按顺序把多层网络“串起来”**。
+`nn.Sequential` 是 PyTorch 里一个非常实用的模块，用来按顺序把多层网络“串起来”。
 
 # 📦 它解决什么问题？
 
@@ -114,7 +114,7 @@ class MyModel(nn.Module):
 
 # 🚨 限制（很重要）
 
-`nn.Sequential` **不能做这些：**
+`nn.Sequential` 不能做这些：
 
 ❌ 分支结构
 ❌ 跳跃连接（ResNet / Transformer）
@@ -159,7 +159,7 @@ model = nn.Sequential(OrderedDict([
 
 👉 `nn.Sequential` 本质就是：
 
-**“把一堆层按顺序打包，自动执行 forward”**
+“把一堆层按顺序打包，自动执行 forward”
 
 
 # 🧠 程序员视角
